@@ -5,18 +5,20 @@
  */
 
 
+
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin.
     id("org.jetbrains.kotlin.jvm") version "1.3.72"
-
-    // Documentation
-    id("org.jetbrains.dokka") version "0.10.0"
-
+        
+    kotlin("plugin.jpa") version "1.3.61"
+    id("org.springframework.boot") version "2.2.2.RELEASE"
+    id("io.spring.dependency-management") version "1.0.8.RELEASE"
+    kotlin("plugin.spring") version "1.3.61"
+        
     // Apply the application plugin to add support for building a CLI application.
     application
 
 }
-
 
 repositories {
     // Use jcenter for resolving dependencies.
@@ -37,5 +39,11 @@ dependencies {
     // Use the Kotlin JUnit integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
 
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
+application {
+    // Define the main class for the application.
+    mainClassName = "kotlinwithak.AppKt"
+}
